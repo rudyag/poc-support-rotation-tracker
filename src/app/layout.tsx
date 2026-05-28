@@ -32,10 +32,13 @@ export default function RootLayout({
         <header className="border-b border-slate-200 bg-white">
           <nav className="mx-auto flex w-full max-w-5xl items-center gap-6 px-6 py-4 text-sm font-medium text-slate-700">
             <Link className="hover:text-slate-900" href="/">
-              Home
+              Dashboard
             </Link>
             <Link className="hover:text-slate-900" href="/roster">
               Roster
+            </Link>
+            <Link className="hover:text-slate-900" href="/schedule">
+              Schedule
             </Link>
           </nav>
         </header>

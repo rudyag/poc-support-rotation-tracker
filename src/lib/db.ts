@@ -26,7 +26,17 @@ function initializeDatabase() {
       created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
 
+    CREATE TABLE IF NOT EXISTS schedule (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      member_id INTEGER NOT NULL,
+      week_start TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY(member_id) REFERENCES members(id)
+    );
+
     CREATE INDEX IF NOT EXISTS idx_members_active ON members(active);
+    CREATE INDEX IF NOT EXISTS idx_schedule_week_start ON schedule(week_start);
+    CREATE INDEX IF NOT EXISTS idx_schedule_member_id ON schedule(member_id);
   `);
 }
 
