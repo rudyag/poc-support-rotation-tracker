@@ -27,7 +27,9 @@ export default async function SchedulePage() {
           <p className="mt-2 text-slate-600">View upcoming support assignments and plan coverage in advance.</p>
 
           {weeks.length === 0 ? (
-            <p className="mt-6 text-slate-600">No schedule data yet. Generate a rotation from the dashboard.</p>
+            <p className="mt-6 text-slate-600">
+              No schedule data yet. Open Dashboard and generate a rotation to see upcoming coverage here.
+            </p>
           ) : (
             <div className="mt-6 overflow-x-auto">
               <table className="min-w-full border-collapse text-left text-sm">

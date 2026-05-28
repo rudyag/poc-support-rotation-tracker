@@ -81,7 +81,9 @@ export function DashboardManager({ initialSnapshot, defaultStartWeek }: Dashboar
       return;
     }
 
-    setMessage(`Generated ${payload?.generatedWeeks ?? 0} week(s) of support coverage.`);
+    setMessage(
+      `Generated ${payload?.generatedWeeks ?? 0} week(s). Existing future schedule entries were replaced from ${startWeek}.`,
+    );
     setSubmitting(false);
     await refreshSnapshot();
   }
@@ -139,7 +141,9 @@ export function DashboardManager({ initialSnapshot, defaultStartWeek }: Dashboar
             <p className="mt-1 text-sm text-slate-600">Week of {snapshot.currentWeekStart}</p>
             {loadingSnapshot ? <p className="mt-4 text-slate-600">Refreshing schedule...</p> : null}
             {!loadingSnapshot && snapshot.currentMembers.length === 0 ? (
-              <p className="mt-4 text-slate-600">No rotation is scheduled for this week.</p>
+              <p className="mt-4 text-slate-600">
+                No rotation is scheduled for this week yet. Add members in Roster, then generate coverage above.
+              </p>
             ) : null}
             {!loadingSnapshot && snapshot.currentMembers.length > 0 ? (
               <ul className="mt-4 space-y-3">
@@ -162,7 +166,7 @@ export function DashboardManager({ initialSnapshot, defaultStartWeek }: Dashboar
                 <p className="text-sm text-slate-600">{snapshot.nextUp.email}</p>
               </div>
             ) : (
-              <p className="mt-4 text-slate-600">No upcoming assignment found.</p>
+              <p className="mt-4 text-slate-600">No upcoming assignment found. Generate at least 2 weeks to preview next up.</p>
             )}
           </div>
         </div>

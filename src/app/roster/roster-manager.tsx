@@ -109,18 +109,18 @@ export function RosterManager({ initialMembers }: RosterManagerProps) {
         {error ? <p className="mt-3 text-sm text-rose-700">{error}</p> : null}
         {loading ? <p className="mt-4 text-slate-600">Loading members...</p> : null}
         {!loading && members.length === 0 ? (
-          <p className="mt-4 text-slate-600">No active members yet.</p>
+          <p className="mt-4 text-slate-600">No members yet - add some to get started.</p>
         ) : null}
         {!loading && members.length > 0 ? (
           <ul className="mt-4 divide-y divide-slate-200">
             {members.map((member) => (
-              <li className="flex items-center justify-between py-3" key={member.id}>
+              <li className="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between" key={member.id}>
                 <div>
                   <p className="font-medium text-slate-900">{member.name}</p>
                   <p className="text-sm text-slate-600">{member.email}</p>
                 </div>
                 <button
-                  className="rounded-md border border-rose-300 px-3 py-1.5 text-sm font-medium text-rose-700 hover:bg-rose-50"
+                  className="w-full rounded-md border border-rose-300 px-3 py-1.5 text-sm font-medium text-rose-700 hover:bg-rose-50 sm:w-auto"
                   onClick={() => void handleRemove(member.id)}
                   type="button"
                 >
